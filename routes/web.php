@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('master');
+    return redirect('dashboard');
 });
+
+
+// dashboard
+Route::get('dashboard', 'DashboardController@admin')->name('dashboard');
+
+// roles
+Route::get('roles', 'RolesController@getRoles')->name('roles');
