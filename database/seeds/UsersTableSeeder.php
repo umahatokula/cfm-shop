@@ -25,6 +25,7 @@ class UsersTableSeeder extends Seeder
             $newUser = config('roles.models.defaultUser')::create([
                 'name'     => 'Admin',
                 'email'    => 'admin@admin.com',
+                'username'    => 'admin',
                 'password' => bcrypt('password'),
             ]);
 
@@ -38,6 +39,7 @@ class UsersTableSeeder extends Seeder
             $newUser = config('roles.models.defaultUser')::create([
                 'name'     => 'User',
                 'email'    => 'user@user.com',
+                'username'    => 'user',
                 'password' => bcrypt('password'),
             ]);
 

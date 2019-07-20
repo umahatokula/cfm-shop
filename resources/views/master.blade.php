@@ -35,6 +35,18 @@
     <!-- Custom Style CSS Only For Demo Purpose -->
     <link id="cus-style" rel="stylesheet" href="{{ asset('assets/css/style-primary.css') }}">
 
+    <style lang="">
+        body {
+            padding: 10px;
+        }
+
+        /* Apply & remove to fix dynamic content scroll issues on iOS 9.0 */
+        .modal-scrollfix.modal-scrollfix {
+            overflow-y: hidden;
+        }
+
+    </style>
+
 </head>
 
 <body>
@@ -52,7 +64,7 @@
 
         <!-- Content Body Start -->
         <div class="content-body">
-            
+
             @yield('body')
 
         </div>
@@ -72,6 +84,7 @@
     <script src="{{ asset('assets/js/vendor/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/vendor/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-confirmation.min.js') }}"></script>
     <!--Plugins JS-->
     <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/tippy4.min.js.js') }}"></script>
@@ -97,6 +110,67 @@
     <script src="{{ asset('assets/js/plugins/vmap/maps/samples/jquery.vmap.sampledata.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/vmap/vmap.active.js') }}"></script>
 
+
+    <script src="{{ asset('assets/js/plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/select2/select2.active.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('body').on('click', '[data-toggle="modal"]', function () {
+                url = $(this).data("remote")
+                console.log(url)
+                $($(this).data("target") + ' .modal-body').load(url);
+            });
+
+            $('#confirmationModal').on('show.bs.modal', function (e) {
+                $(this).find('.confirm').attr('href', $(e.relatedTarget).data('href'));
+            });
+        });
+    </script>
+
 </body>
 
 </html>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                loading...
+            </div>
+            <!-- <div class="modal-footer">
+                <button class="button button-danger" data-dismiss="modal">Close</button>
+                <button class="button button-primary">Save changes</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Confirmation modal -->
+<div class="modal fade" id="confirmationModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm</h5>
+                <button type="button" class="close" data-dismiss="modal"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Are you sure?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <a class="btn btn-primary confirm">Confirm</a>
+            </div>
+        </div>
+    </div>
+</div>
