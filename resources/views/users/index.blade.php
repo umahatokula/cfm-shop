@@ -59,6 +59,8 @@
                                         </td>
                                         <td class="text-center">
 
+                                            <a data-href="#" data-clipboard-text="zmdi zmdi-edit"  data-toggle="modal" data-target="#modal" data-remote="{{route('users.show', $user->id)}}"><i class="text-info zmdi zmdi-eye zmdi-hc-fw"></i></a>
+
                                             <a data-href="#" data-clipboard-text="zmdi zmdi-edit"  data-toggle="modal" data-target="#modal" data-remote="{{route('users.edit', $user->id)}}"><i class="text-primary zmdi zmdi-edit zmdi-hc-fw"></i></a>
                                             
                                             <a data-href="{{route('users.delete', $user->id)}}" data-clipboard-text="zmdi zmdi-delete" data-toggle="modal" data-target="#confirmationModal"><i class="text-danger zmdi zmdi-delete zmdi-hc-fw"></i></a>

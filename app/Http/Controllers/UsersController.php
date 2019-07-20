@@ -8,7 +8,8 @@ use App\Models\Staff;
 use App\Role;
 use App\User;
 use DB;
-use Flash;
+use App\Http\Resources\User as UserResource;
+use App\Http\Resources\UserCollection;
 
 class UsersController extends Controller
 {
@@ -99,11 +100,15 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $data['title'] = 'User details';
-        $data['manage_users'] = 1;
-        $data['user'] = User::find($id);
+        $user = User::find($id);
 
-        return view('users.show', $data);
+        if (request()->expectsJson()) {
+            return response([
+                'data' => new UserResource($user)
+            ], 200);
+        }
+
+        return view('users.show')->with('user', $user);
     }
 
     /**
