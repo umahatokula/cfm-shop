@@ -8,6 +8,7 @@
                 <li class="has-sub-menu"><a href="{{ route('dashboard') }}"><i class="ti-home"></i> <span>Dashboard</span></a>
                 </li>
                 <li><a href="#"><i class="ti-palette"></i> <span>Categories</span></a></li>
+                <li><a href="{{ route('bundles.index') }}"><i class="ti-palette"></i> <span>Bundles</span></a></li>
                 <li class="has-sub-menu"><a href="#"><i class="ti-package"></i> <span>System Settings</span></a>
                     <ul class="side-header-sub-menu">
                         <li><a href="{{ route('users.index') }}"><span>Users</span></a></li>
