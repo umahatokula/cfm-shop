@@ -14,6 +14,17 @@ class Bundle extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        // return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'price' => $this->price,
+            'description' => $this->description,
+            'is_active' => $this->is_active,
+            'meta' => [
+                'no_of_products' => $this->products->count(),
+                'products' => $this->products,
+            ]
+        ];
     }
 }
