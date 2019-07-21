@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Bundle;
 use Illuminate\Http\Request;
+use App\Http\Resources\Bundle as BundleResource;
+use App\Http\Resources\BundleCollection;
 
 class BundleController extends Controller
 {
@@ -16,8 +18,15 @@ class BundleController extends Controller
     {
         $data['bundlesMenu'] = 1;
     	$data['title'] = 'Manage Bundles';
-    	$data['bundles'] = Bundle::all();
+    	$bundles = Bundle::all();
 
+        if (request()->expectsJson()) {
+            return response([
+                'data' => new BundleCollection($bundles)
+            ], 200);
+        }
+
+    	$data['bundles'] = $bundles;
         return view('bundles.index', $data);
     }
 
@@ -71,7 +80,13 @@ class BundleController extends Controller
     {
     	$data['title'] = 'Edit Bundles';
     	$data['bundlesMenu'] = 1;
-    	$data['bundle'] = Bundle::find($bundle->id);
+    	$bundle = Bundle::find($bundle->id);
+
+        if (request()->expectsJson()) {
+            return response([
+                'data' => new BundleResource($bundle)
+            ], 200);
+        }
 
     	return view('bundles.show', $data);
     }
