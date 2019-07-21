@@ -125,6 +125,12 @@
                 $(this).find('.confirm').attr('href', $(e.relatedTarget).data('href'));
             });
         });
+
+         $('.toggle-switch').change(function(){
+            cb = $(this);
+            cb.val(cb.prop('checked'));
+        });
+
     </script>
 
 </body>
