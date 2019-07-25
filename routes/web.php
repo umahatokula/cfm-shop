@@ -28,3 +28,7 @@ Route::get('roles', 'RolesController@getRoles')->name('roles');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/about', function() {
+    return 1234;
+});
