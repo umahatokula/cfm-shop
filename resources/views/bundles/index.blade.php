@@ -56,7 +56,7 @@
                                         <td class="text-center">{{$loop->iteration}}</td>
                                         <td>{{$bundle->name}}</td>
                                         <td>{{$bundle->price}}</td>
-                                        <td class="text-center">{{$bundle->price}}</td>
+                                        <td class="text-center">{{$bundle->products->count()}}</td>
                                         <td class="text-center">
                                             <span class="badge badge-outline badge-{{$bundle->is_active ? 'primary' : 'danger'}}">{{$bundle->is_active ? 'active' : 'inactive'}}</span>
                                         </td>

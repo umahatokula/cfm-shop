@@ -10,7 +10,7 @@
         </tr>
         <tr>
             <td>Number of items in bundle:</td>
-            <td>{{$bundle->price}}</td>
+            <td>{{$bundle->products->count()}}</td>
         </tr>
         <tr>
             <td>Description:</td>

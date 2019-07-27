@@ -18,15 +18,14 @@ class BundleController extends Controller
     {
         $data['bundlesMenu'] = 1;
     	$data['title'] = 'Manage Bundles';
-    	$bundles = Bundle::all();
 
         if (request()->expectsJson()) {
             return response([
-                'data' => new BundleCollection($bundles)
+                'data' => new BundleCollection(Bundle::all())
             ], 200);
         }
 
-    	$data['bundles'] = $bundles;
+    	$data['bundles'] = Bundle::with('products')->get();
         return view('bundles.index', $data);
     }
 
@@ -80,14 +79,14 @@ class BundleController extends Controller
     {
     	$data['title'] = 'Edit Bundles';
     	$data['bundlesMenu'] = 1;
-    	$bundle = Bundle::find($bundle->id);
 
         if (request()->expectsJson()) {
             return response([
-                'data' => new BundleResource($bundle)
+                'data' => new BundleResource(Bundle::find($bundle->id))
             ], 200);
         }
 
+    	$data['bundle'] = Bundle::with('products')->where('id', $bundle->id)->first();
     	return view('bundles.show', $data);
     }
 
