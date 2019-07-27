@@ -11,10 +11,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+<<<<<<< HEAD
         // $this->call(PermissionsTableSeeder::class);
         // $this->call(RolesTableSeeder::class);
         // $this->call(ConnectRelationshipsSeeder::class);
         // $this->call(UsersTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
+=======
+        $this->call(PermissionsTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
+        $this->call(ConnectRelationshipsSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(ProductsTableSeeder::class);
+>>>>>>> Adding create and list of bundles
     }
 }

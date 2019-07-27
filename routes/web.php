@@ -23,8 +23,15 @@ Route::get('dashboard', 'DashboardController@admin')->name('dashboard');
 Route::get('users/{id}/delete', 'UsersController@delete')->name('users.delete');
 Route::resource('users', 'UsersController');
 
+// bundles
+Route::get('bundles/{id}/delete', 'BundleController@delete')->name('bundles.delete');
+Route::resource('bundles', 'BundleController');
+
 // roles
 Route::get('roles', 'RolesController@getRoles')->name('roles');
-Auth::routes();
 
+// home
 Route::get('/home', 'HomeController@index')->name('home');
+
+// auth
+Auth::routes();
