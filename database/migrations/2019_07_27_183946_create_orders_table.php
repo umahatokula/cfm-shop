@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBundlesTable extends Migration
+class CreateOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateBundlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('bundles', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->double('price', 15,2)->default(0.00);
-            $table->boolean('is_active')->default(1);
+            $table->integer('customer_id')->nullable();
+            $table->string('order_number');
+            $table->integer('payment_id')->nullable();
+            $table->double('amount', 15, 2);
+            $table->string('error_msg')->nullable();
+            $table->boolean('is_fulfilled')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -31,6 +33,6 @@ class CreateBundlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bundles');
+        Schema::dropIfExists('orders');
     }
 }
