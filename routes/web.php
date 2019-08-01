@@ -31,6 +31,12 @@ Route::resource('bundles', 'BundleController');
 Route::get('orders/{id}/delete', 'OrderController@delete')->name('orders.delete');
 Route::resource('orders', 'OrderController');
 
+// order details
+Route::get('orders/{id}/details', 'OrderDetailController@details')->name('orders.details');
+
+// products
+Route::resource('products', 'ProductController');
+
 // roles
 Route::get('roles', 'RolesController@getRoles')->name('roles');
 
