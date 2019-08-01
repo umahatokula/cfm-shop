@@ -34,3 +34,12 @@ Route::delete('category/{id}', 'CategoryController@destroy');
 
 //Change category status
 Route::put('category/status/{id}', 'CategoryController@changeStatus');
+
+//List all orders
+Route::get('orders', 'OrderController@index');
+
+//Create new order
+Route::post('orders', 'OrderController@store');
+
+//List Single order
+Route::get('orders/{id}', 'OrderController@show');
