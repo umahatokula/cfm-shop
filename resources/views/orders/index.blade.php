@@ -43,7 +43,7 @@
                                 data-target="#modal"
                                 data-remote="{{route('orders.show', $order->id)}}" href="#"><i class="zmdi zmdi-eye"></i></a>
 
-                                <a class="edit button button-box button-xs button-warning" href="#"><i class="zmdi zmdi-more"></i></a>
+                                <a class="edit button button-box button-xs button-warning" href="{{route('orders.details', $order->id)}}"><i class="zmdi zmdi-more"></i></a>
                             </div>
                         </td>
                     </tr>

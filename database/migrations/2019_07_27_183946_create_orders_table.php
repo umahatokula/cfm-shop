@@ -19,8 +19,10 @@ class CreateOrdersTable extends Migration
             $table->string('order_number');
             $table->integer('payment_id')->nullable();
             $table->double('amount', 15, 2);
+            $table->double('discount', 15, 2)->default(0.00);
             $table->string('error_msg')->nullable();
             $table->boolean('is_fulfilled')->default(0);
+            $table->boolean('is_paid')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
