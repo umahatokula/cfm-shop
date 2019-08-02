@@ -19,9 +19,9 @@ class ProductController extends Controller
     {
         $data['productsMenu'] = 1;
     	$data['title'] = 'Manage Products';
-        $products = Product::all();
+        $products = Product::with('categories')->get();
 
-        if (request()->json()) {
+        if (request()->expectsJson()) {
             return response([
                 'data' => new ProductCollection($products)
             ], 200);
@@ -52,7 +52,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
+
+    	$rules = [
+    	'name' => 'required',
+    	'unit_price' => 'required',
+    	'name' => 'required',
+    	'name' => 'required',
+    	];
+
+    	$messages = [
+    	'name.required' => 'Name is required',
+    	];
+
+        $this->validate($request, $rules, $messages);
+
     }
 
     /**
@@ -63,13 +77,17 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::where('id', $id)->first();
+        $product = Product::where('id', $id)->with('categories')->first();
 
-        if(request()->json()) {
+        if(request()->expectsJson()) {
             return response([
                 'data' => new ProductResource($product)
             ], 200);
         }
+
+        $data['product'] = $product;
+
+        return view('products.show', $data);
     }
 
     /**

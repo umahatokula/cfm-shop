@@ -23,13 +23,12 @@ class ProductsTableSeeder extends Seeder
     	for ($i = 1; $i < $limit; $i++) {
 
             $product                        = new App\Product;
+            $product->sku                  = $faker->word;
             $product->name                  = $faker->word;
             $product->slug                  =$faker->word;
             $product->description           = $faker->sentence;
             $product->unit_price            = $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = NULL);
             $product->discount_price        = $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = NULL);
-            $product->category_id           = $faker->numberBetween($min = 1, $max = 30);
-            $product->bundle_id             = $faker->numberBetween($min = 1, $max = 5);
             $product->quantity_per_unit     = $faker->numberBetween($min = 1, $max = 30);
             $product->units_in_stock        = $faker->numberBetween($min = 1, $max = 100);
             $product->units_on_order        = $faker->numberBetween($min = 1, $max = 5);
