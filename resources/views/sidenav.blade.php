@@ -20,6 +20,9 @@
                 <li>
                     <a href="{{ route('bundles.index') }}"><i class="ti-palette"></i> <span>Bundles</span></a>
                 </li>
+                <li>
+                    <a href="{{ route('pins.listPins') }}"><i class="ti-palette"></i> <span>PIN Mgt</span></a>
+                </li>
                 <li class="has-sub-menu">
                     <a href="#"><i class="ti-package"></i> <span>System Settings</span></a>
                     <ul class="side-header-sub-menu">

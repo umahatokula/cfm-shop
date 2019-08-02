@@ -18,8 +18,6 @@ class Order extends Model
     */
     public function generateOrderNumber() {
 
-        // dd($group);
-
         // The length we want the unique reference number to be
         $orderNumber_length = 10;
 

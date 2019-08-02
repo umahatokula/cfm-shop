@@ -31,6 +31,12 @@ Route::resource('bundles', 'BundleController');
 Route::get('orders/{id}/delete', 'OrderController@delete')->name('orders.delete');
 Route::resource('orders', 'OrderController');
 
+// pins
+Route::get('pins/listPins', 'PinController@listPins')->name('pins.listPins');
+Route::get('pins/create', 'PinController@create')->name('pins.create');
+Route::post('pins/generate', 'PinController@generatePINs')->name('pins.generate');
+Route::get('pins/{pin_id}/transactions', 'PinController@transactions')->name('pins.transactions');
+
 // order details
 Route::get('orders/{id}/details', 'OrderDetailController@details')->name('orders.details');
 
