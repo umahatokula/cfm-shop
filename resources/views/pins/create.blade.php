@@ -9,7 +9,7 @@
                 <div class="col-sm-7 col-12 mb-10">
                     <input type="number" max="100" name="number_to_generate" id="number_to_generate"
                         class="form-control" placeholder="Number of PINs to generate"
-                        aria-describedby="number_to_generate">
+                        aria-describedby="number_to_generate" required>
                     <small id="number_to_generate" class="text-muted">Max of 100</small>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                 <div class="col-sm-5 col-12 mb-10"><label for="value">Value on each PIN</label></div>
                 <div class="col-sm-7 col-12 mb-10">
                     <input type="number" max="5000" name="value" id="" class="form-control"
-                        placeholder="Value on each PIN" aria-describedby="value">
+                        placeholder="Value on each PIN" aria-describedby="value" required>
                     <small id="value" class="text-muted">E.g. 1000</small>
                 </div>
             </div>

@@ -27,11 +27,24 @@ class PinController extends Controller
      */
     public function generatePINs(Request $request) {
         // dd($request->all());
+    	$rules = [
+            'number_to_generate' => 'required',
+            'value' => 'required',
+            ];
+    
+        $messages = [
+            'number_to_generate.required' => 'Number to generate is required',
+            'value.required' => 'Value of each PIN is required',
+            ];
+    
+        $this->validate($request, $rules, $messages);
 
-        $pin = new Pin;
-        $pin->pin = $pin->generatePIN();
-        $pin->value = $request->value;
-        $pin->save();
+        for ($i=0 ; $i < $request->number_to_generate ; $i++) {
+            $pin = new Pin;
+            $pin->pin = $pin->generatePIN();
+            $pin->value = $request->value;
+            $pin->save();
+        }
 
         return redirect()->route('pins.listPins');
     }

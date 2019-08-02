@@ -49,21 +49,21 @@ class OrderController extends Controller
         // dd($request->all());
 
     	$rules = [
-            'order_number' => 'required',
+            'order_details' => 'required',
             ];
     
             $messages = [
-            'order_number.required' => 'Order Number is required',
+            'order_details.required' => 'Order Details is required',
             ];
     
             $this->validate($request, $rules, $messages);
+
+            $amount = $request->order_details->sum('price');
+            dd($amount);
     
             $order                  = new Order;
-            $order->customer_id     = $request->customer_id;
             $order->order_number    = $order->generateOrderNumber();
             $order->amount          = $request->amount;
-            $order->payment_id      = $request->payment_id;
-            $order->error_msg       = $request->error_msg;
             
             
             if($order->save()) {

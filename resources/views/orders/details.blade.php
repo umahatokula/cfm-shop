@@ -46,9 +46,9 @@
                                     <h4 class="mb-25">Purchase Info</h4>
                                     <ul>
                                         <li> <span>Items</span> <span>{{$order->order_details->sum('qty')}}</span> </li>
-                                        <li> <span>Price</span> <span>{{$order->order_details->sum('price')}}</span> </li>
-                                        <li> <span>Discount</span> <span>{{$order->discount}}</span> </li>
-                                        <li> <span>Total</span> <span>{{$order->order_details->sum('price') - $order->discount}}</span> </li>
+                                        <li> <span>Price</span> <span>{{number_format($order->order_details->sum('price'), 2)}}</span> </li>
+                                        <li> <span>Discount</span> <span>{{number_format($order->discount, 2)}}</span> </li>
+                                        <li> <span>Total</span> <span>{{number_format($order->order_details->sum('price') - $order->discount, 2)}}</span> </li>
                                     <li> <span class="h5 fw-600">Type</span> <span class="h5 fw-600 text-{{$order->is_paid ? 'success' : 'danger'}}">{{$order->is_paid ? 'paid' : 'failed'}}</span> </li>
                                     </ul>
                                 </div>
@@ -72,7 +72,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Product Name</th>
-                                                    <th class="text-center">Quentity</th>
+                                                    <th class="text-center">Quantity</th>
                                                     <th class="text-right">Price</th>
                                                 </tr>
                                             </thead>
