@@ -11,6 +11,13 @@
         </div>
     </div><!-- Page Heading End -->
 
+    <!-- Page Button Group Start -->
+    <div class="col-12 col-lg-auto mb-20">
+        <div class="buttons-group">
+            <a href="{{ route('products.create') }}" class="button button-outline button-primary">Add Products</a>
+        </div>
+    </div><!-- Page Button Group End -->
+
 </div><!-- Page Headings End -->
 
 <div class="row">
@@ -36,16 +43,19 @@
                         <td><a href="#">{{$product->name}}</a></td>
                         <td>{{$product->unit_price}}</td>
                         <td>{{$product->units_in_stock}}</td>
-                        <td><span class="badge badge-{{$product->is_available ? 'success' : 'danger'}}">{{$product->is_available ? 'in-stock' : 'out-of-stock'}}</span></td>
+                        <td><span
+                                class="badge badge-{{$product->is_available ? 'success' : 'danger'}}">{{$product->is_available ? 'in-stock' : 'out-of-stock'}}</span>
+                        </td>
                         <td>
                             <div class="table-action-buttons">
                                 <a class="view button button-box button-xs button-primary" data-toggle="modal"
-                                data-target="#modal"
-                                data-remote="{{route('products.show', $product->id)}}" href="#"><i class="zmdi zmdi-more"></i></a>
-                                <a class="edit button button-box button-xs button-info"  data-toggle="modal"
-                                data-target="#modal"
-                                data-remote="{{route('products.edit', $product->id)}}" href="#"><i class="zmdi zmdi-edit"></i></a>
-                                <a class="delete button button-box button-xs button-danger" href="#"><i class="zmdi zmdi-delete"></i></a>
+                                    data-target="#modal" data-remote="{{route('products.show', $product->id)}}"
+                                    href="#"><i class="zmdi zmdi-more"></i></a>
+                                <a class="edit button button-box button-xs button-info" data-toggle="modal"
+                                    data-target="#modal" data-remote="{{route('products.edit', $product->id)}}"
+                                    href="#"><i class="zmdi zmdi-edit"></i></a>
+                                <a class="delete button button-box button-xs button-danger" href="#"><i
+                                        class="zmdi zmdi-delete"></i></a>
                             </div>
                         </td>
                     </tr>

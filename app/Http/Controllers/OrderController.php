@@ -15,15 +15,20 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($customer_id = null)
     {
-        $orders = Order::with('order_details')->paginate();
+        if($customer_id) {
+            $orders = Order::where('customer_id', $customer_id)->with('order_details')->orderBy('created_at', 'desc')->paginate();
+        } else {
+            $orders = Order::with('order_details')->orderBy('created_at', 'desc')->paginate();
+        }
+        
 
-        if (request()->wantsJson()) {
+        // if (request()->wantsJson()) {
             return response([
                 'data' => new OrderCollection($orders)
             ], 200);
-        }
+        // }
 
         return view('orders.index')->with('orders', $orders);
     }
@@ -49,11 +54,11 @@ class OrderController extends Controller
         // dd($request->all());
 
     	$rules = [
-            'order_number' => 'required',
+            'order_details' => 'required',
             ];
     
             $messages = [
-            'order_number.required' => 'Order Number is required',
+            'order_details.required' => 'rder cannot be empty',
             ];
     
             $this->validate($request, $rules, $messages);
@@ -73,7 +78,7 @@ class OrderController extends Controller
                     $orderDetail->order_id      = $order->id;
                     $orderDetail->product_id    = $detail['product_id'];
                     $orderDetail->qty           = $detail['qty'];
-                    $orderDetail->price         = $detail['price'];
+                    $orderDetail->total_amount         = $detail['total_amount'];
                     $orderDetail->save();
                 }
 
@@ -94,11 +99,12 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($order_number)
     {
-        $order = Order::where('id', $order->id)->with('order_details.product')->first();
+        $order = Order::where('order_number', $order_number)->with('transaction', 'order_details.product')->first();
 
         if (request()->expectsJson()) {
+            return $order;
             return response([
                 'data' => new OrderResource($order)
             ], 200);

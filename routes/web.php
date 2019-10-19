@@ -41,7 +41,11 @@ Route::get('pins/{pin_id}/transactions', 'PinController@transactions')->name('pi
 Route::get('orders/{id}/details', 'OrderDetailController@details')->name('orders.details');
 
 // products
+Route::get('products/{id}/download', 'ProductController@download')->name('products.download');
 Route::resource('products', 'ProductController');
+
+// preachers
+Route::resource('preachers', 'PreacherController');
 
 // roles
 Route::get('roles', 'RolesController@getRoles')->name('roles');

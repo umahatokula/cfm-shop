@@ -143,6 +143,8 @@
         $('.dropify').dropify();
 
     </script>
+    @yield('page_js')
+
 
 </body>
 

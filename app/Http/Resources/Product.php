@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Category as CategoryResource;
+use App\Http\Resources\Preacher as PreacherResource;
 use App\Http\Resources\CategoryCollection;
 
 class Product extends JsonResource
@@ -19,6 +20,7 @@ class Product extends JsonResource
         // return parent::toArray($request);
         return [
             'id' => $this->id,
+            'sku' => $this->sku,
             'name' => $this->name,
             'slug' => $this->slug,
             'description' => $this->description,
@@ -31,6 +33,7 @@ class Product extends JsonResource
             'is_taxable' => $this->is_taxable,
             'is_available' => $this->is_available,
             'is_discountable' => $this->is_discountable,
+            'is_digital' => $this->is_digital,
             'is_active' => $this->is_active,
             'download_link' => $this->download_link,
             'large_image_path' => $this->large_image_path,
@@ -40,6 +43,7 @@ class Product extends JsonResource
             'links' => [
                 '_self' => route('api.products.show', $this->id),
                 '_categories' => CategoryResource::collection($this->whenLoaded('categories')),
+                // '_preacher' => PreacherResource::collection($this->whenLoaded('preacher')),
             ]
         ];
     }
