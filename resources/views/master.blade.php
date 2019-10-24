@@ -113,6 +113,14 @@
 
     <script src="{{ asset('assets/js/plugins/select2/select2.full.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/select2/select2.active.js') }}"></script>
+
+
+    <script src="{{ asset('assets/js/plugins/filepond/filepond.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/filepond/filepond-plugin-image-exif-orientation.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/filepond/filepond-plugin-image-preview.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/filepond/filepond.active.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/dropify/dropify.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/dropify/dropify.active.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('body').on('click', '[data-toggle="modal"]', function () {
@@ -131,7 +139,12 @@
             cb.val(cb.prop('checked'));
         });
 
+
+        $('.dropify').dropify();
+
     </script>
+    @yield('page_js')
+
 
 </body>
 

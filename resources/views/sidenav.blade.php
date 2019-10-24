@@ -18,6 +18,9 @@
                     <a href="#"><i class="ti-palette"></i> <span>Categories</span></a>
                 </li>
                 <li>
+                    <a href="{{ route('preachers.index') }}"><i class="ti-palette"></i> <span>Preachers</span></a>
+                </li>
+                <li>
                     <a href="{{ route('bundles.index') }}"><i class="ti-palette"></i> <span>Bundles</span></a>
                 </li>
                 <li>

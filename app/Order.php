@@ -11,6 +11,10 @@ class Order extends Model
         return $this->hasMany('App\OrderDetail');
     }
 
+    public function transaction() {
+        return $this->hasOne('App\Transaction');
+    }
+
 
     /**
      * [generate description]

@@ -29,8 +29,9 @@
                 <thead>
                     <tr>
                         <th>PIN</th>
-                        <th class="text-right">PIN Value</th>
-                        <th class="text-right">Value Used</th>
+                        <th class="text-right">PIN Units</th>
+                        <th class="text-right">Units Used</th>
+                        <th class="text-right">Available Units</th>
                         <th class="text-center">Action(s)</th>
                     </tr>
                 </thead>
@@ -40,6 +41,7 @@
                         <td scope="row">{{$pin->pin}}</td>
                         <td class="text-right">{{number_format($pin->value, 2)}}</td>
                         <td class="text-right">{{number_format($pin->value_used, 2)}}</td>
+                        <td class="text-right">{{number_format($pin->value - $pin->value_used, 2)}}</td>
                         <td class="text-center">
                             <a data-toggle="modal"
                             data-target="#modal"
