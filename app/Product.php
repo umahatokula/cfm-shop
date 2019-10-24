@@ -48,6 +48,16 @@ class Product extends Model implements Searchable
         // ],
     ];
 
+    protected $casts = [
+        'is_taxable' => 'boolean',
+        'is_fulfilled' => 'boolean',
+        'is_available' => 'boolean',
+        'is_discountable' => 'boolean',
+        'is_active' => 'boolean',
+        'is_digital' => 'boolean',
+        'is_audio' => 'boolean',
+    ];
+
 
     public function getSearchResult(): SearchResult
     {
